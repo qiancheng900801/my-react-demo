@@ -12,9 +12,9 @@ const List = (props) => {
 
   useEffect(() => {
     getList()
-  }, [])
+  }, [current, pageSize])
   const getList = () => {
-    productsListApi({ per: 2, page: current }).then(res => {
+    productsListApi({ per: pageSize, page: current }).then(res => {
       setTotal(res.data.totalCount)
       setList(res.data.products)
     })
@@ -30,7 +30,7 @@ const List = (props) => {
     })
   }
   const pageChange = (page, pageSize) => {
-    // setPageNumber(page)
+    setPageNumber(page)
   }
   const pageSizeChange = (page, pageSize) => {
     setPageSize(pageSize)
@@ -69,7 +69,7 @@ const List = (props) => {
           onClick={() => props.history.push('/admin/products/edit')}>
           添加商品
         </Button>}>
-      <Table rowKey="_id" columns={columns} bordered dataSource={list} pagination={{ total, onChange: pageChange }}  >
+      <Table rowKey="_id" columns={columns} bordered dataSource={list} pagination={{ current, pageSize, total, showSizeChanger: true, pageSizeOptions: [2, 5, 10], onChange: pageChange, onShowSizeChange: pageSizeChange }}  >
       </Table>
     </Card>
   );

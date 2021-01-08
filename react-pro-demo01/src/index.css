@@ -1,0 +1,6 @@
+html,body,#root,.ant-layout {
+  /* min-height: 100%; */
+}
+.ant-layout-sider {
+  overflow-y: auto;
+}

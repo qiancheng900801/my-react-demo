@@ -4,7 +4,9 @@ import List from '../pages/admin/products/List'
 import Edit from '../pages/admin/products/Edit'
 import Welcome from '../pages/welcome'
 import PageNotFound from '../pages/PageNotFound'
+import Notices from '../pages/admin/notices/notices'
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { FormProvider } from 'antd/lib/form/context'
 export const mainRoutes = [
   { path: '/login', component: Login },
   { path: '/404', component: PageNotFound }
@@ -36,6 +38,12 @@ export const adminRoutes = [
     path: '/admin/products/edit/:id?',
     component: Edit,
     isShow: false,
-    title: <SettingOutlined />
+    title: ''
+  },
+  {
+    path: '/admin/notices',
+    component: Notices,
+    isShow: false,
+    title: ''
   }
 ]

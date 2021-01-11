@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Table, Button, Popconfirm, message } from 'antd'
 import { productsListApi, productsDelApi, productsEditApi } from '../../../services/products'
-
+import { serverUrl } from '../../../config'
 
 const List = (props) => {
 
@@ -12,9 +12,9 @@ const List = (props) => {
 
   useEffect(() => {
     getList()
-  }, [])
+  }, [current, pageSize])
   const getList = () => {
-    productsListApi({ per: 2, page: current }).then(res => {
+    productsListApi({ per: pageSize, page: current }).then(res => {
       setTotal(res.data.totalCount)
       setList(res.data.products)
     })
@@ -30,17 +30,18 @@ const List = (props) => {
     })
   }
   const pageChange = (page, pageSize) => {
-    // setPageNumber(page)
+    setPageNumber(page)
   }
   const pageSizeChange = (page, pageSize) => {
     setPageSize(pageSize)
   }
 
   const columns = [
-    { title: '序号', key: '_id', width: 80, render: (text, record, index) => (current - 1) * pageSize + index + 1 },
-    { title: '名字', dataIndex: 'name' },
-    { title: '价格', dataIndex: 'price' },
-    { title: '是否在售', render: (recode) => (recode.onSale ? '在售' : '已下架') },
+    { title: '序号', align: 'center', key: '_id', width: 80, render: (text, record, index) => (current - 1) * pageSize + index + 1 },
+    { title: '名字', align: 'center', dataIndex: 'name' },
+    { title: '价格', align: 'center', dataIndex: 'price' },
+    { title: '图片', align: 'center', render: (recode) => (recode.coverImg ? <img style={{ width: '160px' }} src={`${serverUrl}${recode.coverImg}`} alt='主图' /> : '暂无图片') },
+    { title: '是否在售', align: 'center', render: (recode) => (recode.onSale ? '在售' : '已下架') },
     {
       title: '操作', align: 'center', render: (text, record, index) => (
         <div>
@@ -69,7 +70,7 @@ const List = (props) => {
           onClick={() => props.history.push('/admin/products/edit')}>
           添加商品
         </Button>}>
-      <Table rowKey="_id" columns={columns} bordered dataSource={list} pagination={{ total, onChange: pageChange }}  >
+      <Table rowKey="_id" columns={columns} bordered dataSource={list} pagination={{ total, pageSize, onChange: pageChange }}  >
       </Table>
     </Card>
   );

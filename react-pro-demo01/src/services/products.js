@@ -23,3 +23,7 @@ export const productsDelApi = (id) => {
 export const productsInfoApi = (id) => {
   return get(`/api/v1/admin/products/${id}`)
 }
+// 文件上传
+export const uploadFile = (file) => {
+  return post(`/api/v1/common/file_upload`, file)
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg'
-import { Layout, Menu, Dropdown, Button, Avatar, message } from 'antd';
+import { Layout, Menu, Dropdown, Button, Avatar, message, Badge } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom'
 import { adminRoutes } from '../../router'
@@ -14,7 +14,7 @@ function menu(props) {
     console.log(value);
     switch (value.key) {
       case 'noti':
-        message.info('noti')
+        props.history.push('/admin/notices')
         break;
       case 'setting':
         message.info('setting')
@@ -47,7 +47,9 @@ function Index(props) {
           <div>
             <Avatar size="large" icon={<UserOutlined />} />
             <Dropdown overlay={() => menu(props)} placement="bottomCenter">
-              <Button type='link'>超级管理员</Button>
+              <Badge dot>
+                <Button type='link'>超级管理员</Button>
+              </Badge>
             </Dropdown>
           </div>
         </div>

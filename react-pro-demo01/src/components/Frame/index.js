@@ -5,6 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom'
 import { adminRoutes } from '../../router'
 import { removeToken } from '../../pages/utils/auth'
+import { connect } from 'react-redux'
 import './frame.css'
 const routes = adminRoutes.filter(route => route.isShow)
 const { Header, Content, Sider } = Layout;
@@ -38,7 +39,6 @@ function menu(props) {
 }
 
 function Index(props) {
-
   return (
     <Layout>
       <Header className="header">
@@ -47,7 +47,7 @@ function Index(props) {
           <div>
             <Avatar size="large" icon={<UserOutlined />} />
             <Dropdown overlay={() => menu(props)} placement="bottomCenter">
-              <Badge dot>
+              <Badge dot={!props.isAllRead}>
                 <Button type='link'>超级管理员</Button>
               </Badge>
             </Dropdown>
@@ -103,4 +103,4 @@ function Index(props) {
     </Layout>
   )
 }
-export default withRouter(Index)
+export default connect((state) => state.notices)(withRouter(Index))

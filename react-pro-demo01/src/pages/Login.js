@@ -23,7 +23,7 @@ function Login(props) {
     })
   }
   return (
-    <Card title='登录' style={{ width: '500px', margin: '0 auto' }}>
+    <Card title='登录' style={{ width: '500px', margin: '200px auto 0' }}>
       <Form from={from} onFinish={onFinish}>
         <Form.Item label='账号' name='userName' rules={rules.name}>
           <Input placeholder="账号" />

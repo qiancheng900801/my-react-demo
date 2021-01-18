@@ -11,6 +11,7 @@ const routes = adminRoutes.filter(route => route.isShow)
 const { Header, Content, Sider } = Layout;
 
 function menu(props) {
+  console.log(props);
   function menuClick(value) {
     console.log(value);
     switch (value.key) {
@@ -39,6 +40,7 @@ function menu(props) {
 }
 
 function Index(props) {
+  console.log(props);
   return (
     <Layout>
       <Header className="header">
@@ -61,6 +63,7 @@ function Index(props) {
             defaultSelectedKeys={[]}
             defaultOpenKeys={[]}
             style={{ height: '100%', borderRight: 0 }}
+
           >
             {routes.map(route => (
               <Menu.Item key={route.path} icon={route.icon} onClick={(e) => { props.history.push(e.key) }}>

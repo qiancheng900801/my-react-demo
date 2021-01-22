@@ -1,11 +1,9 @@
 import React from 'react';
 import { Layout } from 'antd'
 import LeftMenu from '../Slider'
-
 import Welcome from '../../pages/home/home'
 import ProductsList from '../../pages/product/list'
 import ProductsEdit from '../../pages/product/edit'
-
 import './index.css'
 import { Redirect, Route, Switch } from 'react-router-dom';
 const { Sider, Header, Content, Footer } = Layout

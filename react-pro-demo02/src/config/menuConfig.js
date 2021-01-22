@@ -24,18 +24,18 @@ const menuList = [
         title: '商品编辑',
         key: '/products/edit',
         icon: <PieChartOutlined />,
-        children: [
-          {
-            title: '增加',
-            key: '/products/add',
-            icon: <PieChartOutlined />
-          },
-          {
-            title: '删除',
-            key: '/products/del',
-            icon: <PieChartOutlined />
-          }
-        ]
+        // children: [
+        //   {
+        //     title: '增加',
+        //     key: '/products/add',
+        //     icon: <PieChartOutlined />
+        //   },
+        //   {
+        //     title: '删除',
+        //     key: '/products/del',
+        //     icon: <PieChartOutlined />
+        //   }
+        // ]
       }
     ]
   }
